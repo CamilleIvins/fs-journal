@@ -28,10 +28,10 @@
     > | Calmness is an overarching experience that can be provided through good design. Prospective purchasers of goods and services are not aiming to feel exasperated by tedious navigation, irriated by pop-ups, or stressed by poor color contrast, and mistakes in this area can be interpreted as a lack of professionalism. Design can convey confidence or spiritedness as much as dodginess or afterthought. |
 
 08. What is the purpose of ***wireframing***?
-    > | ANSWER HERE |
+    > | A wireframe lays out the overall composition a web page is expected to have, serving as a blueprint of sorts. A good wireframe has the elements laid out, though not fleshed out. |
 
 09. Do you think wireframes are worth the time, energy, and effort that they require? Why or Why not?
-    > | ANSWER HERE |
+    > | As a beginner, I definitely see use in having a wireframe. Moving forward, I can see the nature of a wireframe perhaps changing moreso than becoming obsolete. Much like an essay outline, learning the path from intro to conclusion is not to wax poetic on the 5-paragraph composition piece, but to bring about better understanding between two people, as long as that purpose is being fulfilled, wireframe are worth the effort. |
 
 10. Define the display `:flex property:`
     > | ANSWER HERE |
