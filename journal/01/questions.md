@@ -34,7 +34,7 @@
     > | As a beginner, I definitely see use in having a wireframe. Moving forward, I can see the nature of a wireframe perhaps changing moreso than becoming obsolete. Much like an essay outline, learning the path from intro to conclusion is not to wax poetic on the 5-paragraph composition piece, but to bring about better understanding between two people, as long as that purpose is being fulfilled, wireframe are worth the effort. |
 
 10. Define the display `:flex property:`
-    > | ANSWER HERE |
+    > | Presently the bane of my existence? Ideally, the flex property display will adjust the length of items within a container when the overall screen parameters change. If not adjusted, an element may disappear, grow to cover the page, or otherwise force the page elements out of alignment. |
 
 11. What `CSS` properties affect the size of a box model?
-    > | ANSWER HERE |
+    > | Too many. There can be changes with margins or gaps, the alignment can be altered by the number of elements combined in a row - and how they are combined - or the content within can force a change in the size. |
