@@ -200,8 +200,8 @@ position absolute = no longer respect outer structure of HTML nesting
 
   .container-asddf{
  position: relative;
-
- }
+ display: flex;
+  }
 
  NOW
 
@@ -212,3 +212,50 @@ position absolute = no longer respect outer structure of HTML nesting
 
 
  **NOTE - could have many position: relative BUT the closest relative element will be the one to become the reference point!!!
+
+  .container-asddf{
+ position: relative;
+ display: flex;
+ flex-direction: column;
+ align-items: center  <----because you changes the flex dir, not justify
+ }
+
+ NOW
+
+  .btn-asddf{
+ position: absolute
+ bottom: 5px;
+ 
+ }
+
+ add custom media queries to alt
+ on this screen sixe apply x CSS and on this screen size apply y CSS
+ @media
+^based on min screen width
+        768px is the md breakpoint
+**NOTE - can ref as many classes or selectors as we want w/in one media query - cand do for every size, FOR EVERY CSS rule you've written
+^ still add breakpoint, or set at max-width to base case desktop, base case mobile is min-width
+
+@media (min-width: 768px) {
+.card-something{
+    background-img: url() <-- can ref other class and replace at a specific breakpoint
+}
+}
+
+Custom font, sticky nav bar
+sticky-top sticks to the top of the thing above it ie, if you scroll away from header, you lose it
+
+<header class="sticky-top" ><-- keeps section to top of viewport js adds transition
+
+add font type to utility calsses
+.font-name {
+    font-family: 'name', stylization
+}
+
+button {
+    box-shadow: px px px px, color
+    border:
+}
+
+https://www.figma.com/file/YleNmJbuGPUlSU5krdeM1R/Green-Eggs-and-Ham?type=design&node-id=1%3A18&mode=design&t=wSRrmf7AHwHHf8tR-1
+
