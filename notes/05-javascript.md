@@ -315,7 +315,7 @@ can use the .toString() method
 
 string around interpolated values to pass down values to string literal
 
-# Aug 17th *FIXME - Scrum lecture
+# Aug 17th *FIXME - Scrum lecture - how to prioritize tasks
 Org structure - sort of // to the ideas around military division of authority, but with managerial trappings - OODA with corporate design
 
 Sam doing game logic on new game based on Scrum - Zookeeper
@@ -333,7 +333,7 @@ setInterval( , ) <-- argument (set of instructions/callbackf(n)) and time (delay
 setInterval(function) <--do not add function's () after, or else it will only invoke once, not set as an interval AS YOU PLACED THIS TO BE
 ^ setInterval(speedUpCoding(), 10000) <--bad
 ^ setInterval(speedUpCoding, 10000) <-- good
-setInterval(() => {})
+setInterval(() => {}) <--- often set indep of functions so that they do not need to be called
 
 CLAMP - end limit to interval
 i.e. IF hunger reaches 0, then redeclare object key to set #, in this case, keep it as 0
@@ -348,7 +348,7 @@ relate strings to objects to manipulate them --> puppeteer
 alias all in array via full function, but based on specific onclick
 
 function feedAnimal(animalName) {
-   let founAnimal = aminals.find(animal => animal.name == animalName)
+   let foundAnimal = animals.find(animal => animal.name == animalName)
    foundAnimal.hunger ++
    if (foundAnimal.hunger>= 100)  foundAnimal.humger = 100
 
@@ -365,7 +365,7 @@ function updateAnimal(animal) { <---name of object here does not matter, but it 
    animalStatsElem.innerText = `${animal.name} | ${animal.status} | ${animal.hunger}`
 }
 
-   # *NOTE - switch statement
+   # *NOTE - switch statement -jk, later on
 
 Trigger a change in Y for change in X
 consolidate based off of multiple conditions
@@ -375,6 +375,124 @@ consolidate based off of multiple conditions
    ^ to lock off and collapse code sections
 
 
+function updateAnimal(animal) { <---name of object here does not matter, but it does in the functions within which it is called. Here is banana word, but it is a paramenter in the feedAnimal function
+   console.log('updating')
+
+
+if(animal.hunger > 75) {
+   animal.status = '😊'
+} else if (animal.hunger > 50) {
+   animal.status = '🤨'
+} else if (animal.hunger > 25) {
+   animal.status = '😐'
+} else if (animal.hunger > 5) {
+   animal.status = '😖'
+} else (animal.hunger = 0) {
+   animal.status = '👻'
+}
+
+   let animalStatsElem = document.getElementById(`${animal.name}Stats`)
+                                                      //^consistent naming will be your friend
+   animalStatsElem.innerText = `${animal.name} | ${animal.status} | ${animal.hunger}`
+         ^move lines lower than status so feeding is more reactive to status vs interval lag
+<!-- switch(animal.status) { -->
+   <!-- case '' -->
+}
+}
+
+
+change to:
+
+function updateAnimal(animal) { <---name of object here does not matter, but it does in the functions within which it is called. Here is banana word, but it is a paramenter in the feedAnimal function
+   console.log('updating')
+
+
+         updateAnimalStatus(animal)
+
+   let animalStatsElem = document.getElementById(`${animal.name}Stats`)
+                                                      //^consistent naming will be your friend
+   animalStatsElem.innerText = `${animal.name} | ${animal.status} | ${animal.hunger}`
+         ^move lines lower than status so feeding is more reactive to status vs interval lag
+
+<!-- switch(animal.status) { -->
+   <!-- case '' -->
+}
+
+function updateAnimalStatus (animal) {
+   if(animal.hunger > 75) {
+   animal.status = '😊'
+} else if (animal.hunger > 50) {
+   animal.status = '🤨'
+} else if (animal.hunger > 25) {
+   animal.status = '😐'
+} else if (animal.hunger > 5) {
+   animal.status = '😖'
+} else (animal.hunger = 0) {
+   animal.status = '👻'
+}
+
+}
+
+   # *NOTE - Marquee tags - move objects within div
+
+   nest the marquee tags to get bounce effect <-- look at MDN for more info ^singular marquee only goes L-->R or up-->down
+   ^double marquee gives you screensaver effect
+   default direction is left to right motion, up-down must be written into class direction
+
+
+   # *NOTE - query selectors - grab elements by CLASS _not_ ID
+
+set an "id" tag before 
+let animalPenElem = document.getElementById(`${animal.name}`)
+let marquee1 = animalPenElem.querySelector('.marquee1') <-- must use proper CSS syntax - .class
+let marquee2 = animalPenElem.querySelector('.marquee2') <-- both selected, can enter IF
+
+if(animal.status == '👻') {
+   marquee1.stop()
+   marquee2.stop() <-- errors will pop, but code will work
+}
+
+# *SECTION - add ticket-taking and expense functions - switch staements
+
+NOW we get to the switch statement
+let paycheck = 0
+let bankAcct = 0
+
+function getPaid(){
+   <!-- console.log('greenbacks') -->
+<!-- based off of animal statuses...add $ to paycheck...add paycheck to bank account -->
+<!-- make global variables, place at top of file
+ <!-serbank account and paycheck to zero- -->
+   let paycheck = 0
+animals.forEach(animal => {
+   switch(animal.status){
+      case '😊':
+      paycheck += 100
+      break <--- breaks us out of switch statement
+      case '🤨':
+      paycheck += 75
+      break
+      case '😐':
+      paycheck += 30
+      break
+      case '😖':
+      paycheck += 0
+      break
+      case '👻':
+      paycheck -= 1000
+      break
+      
+   }
+})
+console.log(paycheck)
+bankAcct += paycheck
+}
+ setInterval(getpaid, 1000)
+
+
+for feedAnimal, assign !element to check for opposite of issue, lock away ability to click
+
+skeleton of game finished - then 
 
 # TBD Aug 18th
 
