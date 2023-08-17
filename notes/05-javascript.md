@@ -1,8 +1,8 @@
 # JavaScript
 Week 2 notes Aug 14-18
+Aug 17th notes on Scrum
 
-
-August 14th JS notes
+# August 14th JS notes {
 
 Get from slack, late summer github
 
@@ -106,8 +106,8 @@ function sayHello() {
 
 add button on html for interation
 <!-- // #endregion -->
-
- **SECTION - APP TIME
+}
+ # app time **SECTION - APP TIME
 
  Document Object Model = DOM
 
@@ -148,7 +148,7 @@ let thingsClicked = ''
     updateDom()
  }
 
- *FIXME - red anchor for new day - Aug. 15th: creating arrays
+# Aug 15th *FIXME - red anchor for new day - Aug. 15th: creating arrays
 
  LINK ALL FILES - MDI, Bootstrap, own CSS, JS at the bottom of body in script tags
  header gets container classes, section gets row, div gets col
@@ -168,7 +168,7 @@ let thingsClicked = ''
  let animal = animals[i] <-- only exists in for loop
  console.log(animal.name, animal.emoji)
 
-*SECTION - forEach only works on arrays
+   # *SECTION - forEach only works on arrays
 
  array.forEach()
  loops over an entire array for up to three arguments <-- value, index, array
@@ -259,7 +259,7 @@ drawAnimals()
 
 find - array method <-- array.find() one condition until found true for each elem in array
 
-*FIXME - Aug 16th Sam's lecture
+# Aug 16th *FIXME - Aug 16th Sam's lecture
 
 Sammy's Sammies - checkout window w/cart
 link all your fonts, mdi, bs, and own css
@@ -314,3 +314,67 @@ can use the .toString() method
 === <-- must be exactly this to be drawn or identified
 
 string around interpolated values to pass down values to string literal
+
+# Aug 17th *FIXME - Scrum lecture
+Org structure - sort of // to the ideas around military division of authority, but with managerial trappings - OODA with corporate design
+
+Sam doing game logic on new game based on Scrum - Zookeeper
+Backlog -> In Progress -> Review -> Done
+Sprints - task oriented progress of minimum viable product --> the real MVP
+
+What makes it a game - what interactions? <-- backlog of tasks brainstormed (i.e. feeding, taking guest tickets, payment process, loss on animal death, etc...)
+
+main>section.row in CSS will target the sections in main with row class
+
+   # *NOTE - interval calls
+setInterval( , ) <-- argument (set of instructions/callbackf(n)) and time (delay/"timeout" how often you want this to execute, time is guaged in miliseconds, so your number will be large)
+^ functions as arguments are passed as set of instruction
+
+setInterval(function) <--do not add function's () after, or else it will only invoke once, not set as an interval AS YOU PLACED THIS TO BE
+^ setInterval(speedUpCoding(), 10000) <--bad
+^ setInterval(speedUpCoding, 10000) <-- good
+setInterval(() => {})
+
+CLAMP - end limit to interval
+i.e. IF hunger reaches 0, then redeclare object key to set #, in this case, keep it as 0
+
+building duplicate lines? think about refactoring - ie, not making a feed button for each animal in a zoo
+** create an update vs draw (changing preexisting vs new)
+
+
+*NOTE - write "debugger" within a function - is a code to pause the code at that line when running in real time on the localhost8080
+
+relate strings to objects to manipulate them --> puppeteer
+alias all in array via full function, but based on specific onclick
+
+function feedAnimal(animalName) {
+   let founAnimal = aminals.find(animal => animal.name == animalName)
+   foundAnimal.hunger ++
+   if (foundAnimal.hunger>= 100)  foundAnimal.humger = 100
+
+updateAnimal(foundAnimal)
+}
+
+now can write // function
+
+function updateAnimal(animal) { <---name of object here does not matter, but it does in the functions within which it is called. Here is banana word, but it is a paramenter in the feedAnimal function
+   console.log('updating')
+
+   let animalStatsElem = document.getElementById(`${animal.name}Stats`)
+                                                      //^consistent naming will be your friend
+   animalStatsElem.innerText = `${animal.name} | ${animal.status} | ${animal.hunger}`
+}
+
+   # *NOTE - switch statement
+
+Trigger a change in Y for change in X
+consolidate based off of multiple conditions
+
+   //#region
+   //#endregion
+   ^ to lock off and collapse code sections
+
+
+
+# TBD Aug 18th
+

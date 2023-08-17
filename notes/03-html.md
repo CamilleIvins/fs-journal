@@ -10,7 +10,7 @@ frames, boxes, pens to sketch out the grouping of prospective elements
 industry standard tool
 #16161D = "color you see when you close your eyes"
 
-Sam's Aug 10th lecture - Figma to dev
+# Sam's Aug 10th lecture - Figma to dev
 
 powershell it out --> touch index.html style.css
 HTML -- !
