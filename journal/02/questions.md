@@ -1,7 +1,7 @@
 # Intro to JavaScript
 01. Which keywords are used to declare a variable in JavaScript?
 
-    > | The three keywords to declare variables are "let", "const", and "var". const will not allow you to over write any of the variables it declares. |
+    > | The three keywords to declare variables are "let", "const", and "var". const will not allow you to override any of the variables it declares. |
 
 02. What is the definition of a function?
 
@@ -44,6 +44,7 @@
     > |
     function addFriend() {
   let buddy = you.find(your => your.friends += 'them')
+  let pal = them.find(their => their.friends += 'you')
 } |
 
 06. Give an example of a JavaScript `Conditional`:
@@ -65,7 +66,7 @@
 
 07. What is the main difference between `parameters` and `arguments`?
 
-    > | Arguments fall within parameters, like with regular, verbal arguments, ideally. A baker's dozen is 13, so the rule for arguing that a dozen is, indeed, 13 and not 12, you must invoke the mental function where the parameters that make the argument valid.
+    > | Arguments fall within parameters, like with regular, verbal arguments, ideally. A baker's dozen is 13, so the rule for arguing that a dozen is, indeed, 13 and not 12, you must invoke the mental function where the parameters can make the argument valid.
     const dozen = 12
     const freebie = 1
     function bakersDozen(num1, num2) {
@@ -81,7 +82,7 @@
 
 09. What is the difference between a `primitive` value and a `reference` value?
 
-    > | ANSWER HERE |
+    > | Primitive values are when the variable's value is the base date, whereas relative values are in reference to primitive values. So a smartphone is a reference for contacts, and can be accessed by multiple phones or devices but the contact itself is not able to change their info (without phone companies or courts). |
 
 10. Demonstrate a loop that prints the numbers between -100 and 100?
 
