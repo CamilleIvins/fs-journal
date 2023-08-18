@@ -494,5 +494,15 @@ for feedAnimal, assign !element to check for opposite of issue, lock away abilit
 
 skeleton of game finished - then 
 
+# *ANCHOR - Savannah's fireside
+
+// the Boss Moster game, but with extra elements and notes + will be slacked
+
+WRITE CODE FOR ONE ELEMENT AT A TIME _EVEN_ WHEN YOU CAN CONSOLIDATE LATER
+
+each buy and draw function will go per ally bought
+
+CTRL + . to ignore spelling message
+
 # TBD Aug 18th
 
