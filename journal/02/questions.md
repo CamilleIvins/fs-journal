@@ -45,7 +45,8 @@
     function addFriend() {
   let buddy = you.find(your => your.friends += 'them')
   let pal = them.find(their => their.friends += 'you')
-} |
+}
+I know this is wrong because the kahoot went over this, something about push. |
 
 06. Give an example of a JavaScript `Conditional`:
 
