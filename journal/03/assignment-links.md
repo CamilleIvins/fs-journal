@@ -1,6 +1,6 @@
 ## Afternoon Assignment Links
 
 * **[Repo](https://github.com/CamilleIvins/Game-Night)**
-* **[Repo](https://github.com/CamilleIvins/<ASSIGNMENT_REPO>)**
-* **[Repo](https://github.com/CamilleIvins/<ASSIGNMENT_REPO>)**
-* **[Repo](https://github.com/CamilleIvins/<ASSIGNMENT_REPO>)**
+* **[Repo](https://https://github.com/CamilleIvins/Vendr)**
+* **[Repo](https://https://github.com/CamilleIvins/lateSummer23-gregslistMVC)**
+* **[Repo](https://github.com/CamilleIvins/Jungle-Jumble>)**
