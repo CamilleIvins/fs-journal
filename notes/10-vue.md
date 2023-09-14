@@ -531,11 +531,38 @@ Homepage w/in RETURN block COMPUTED
 #SECTION - layout
 
 Section--row
-    Div--col, v-for="project in projects" :key="project.id"
+    Div--col, v-for="project in projects" :key="project.id" <--d-flex can go in WITH col
             {{deets A}} {{deets B}} <--call these in COMPONENT (should see double entry on page) before commenting out
 
 #SECTION - MAKE COMPONENTS (card time)
 Project card
 #NOTE - TURN OFF JS setting in imports
 
-Props go here
+Props go here <-- want to retrieve full item
+    will need to be passed as argement in SETUP to be called in RETURN
+        //NOTE - computed elements must be pre-rendered to your desire w/ styling all already in place
+v-bind takes values in the RETURN and passes them as styling
+# - Modal wrappers: slot tags
+Slot in a template into another template
+Style like router-link w/ open and close tags
+
+in Modal, use slot tags, into which you place div or button or whatever
+    can tag into the MODAL wrapper using template #<--to id which portion of the wrapper you wish to draw in/fill out
+
+
+remember the v-if="activeX", so that things will load only when active is chosen, vs auto-breaking upon page load
+
+be sure to temember you van use queries in the endpoints w/ string interpolation
+ProjectCard :project="project"
+                        ⬆️ this is what they ahve the option to pull from
+
+# service
+    .map --> creates new array
+        cannot map a single object, must be an array of objects
+
+        if there is an undefined or null, use elvis operator so that code will not try to reach into an undefined or null object for a value that does not exist and then break code
+# #STUB - Changing account info
+
+Account page <-- place form here
+
+put max-length on both front and back end
