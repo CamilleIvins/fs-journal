@@ -2,7 +2,8 @@ Linked to Github:
     Auth0:
                in ENV ⬇️ domain
         Domain: dev-empex7cj2h0al138.us.auth0.com
-        Client ID: kyRI3q7Ma6zMxpGCiHHj5zh8In3fcHDN
+        <!-- Client ID: kyRI3q7Ma6zMxpGCiHHj5zh8In3fcHDN -->
+        Client ID: ZVL4bcvPZQLMBI358CDHdndwYiEn70mF
                 auth audience⬇️
         SandCastle, https://sandcastle/
 
