@@ -1,4 +1,4 @@
-# Vue
+# Vue - two wweks of this, look in wk 7 folder for lecture that week
 Vue created by Evan You (Chinese Singaporean)
 
 Vue, Angular, and React do the same thing, but the key is styling. They are ALL Javascript at their core, diff mainly in syntax
@@ -563,6 +563,3 @@ ProjectCard :project="project"
         if there is an undefined or null, use elvis operator so that code will not try to reach into an undefined or null object for a value that does not exist and then break code
 # #STUB - Changing account info
 
-Account page <-- place form here
-
-put max-length on both front and back end

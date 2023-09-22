@@ -121,3 +121,14 @@ so now can add function in RETURN where user can interact with it
 
 
 Compare the getPokemon and changePage SERVICE functions
+
+
+# Savannah's Thursday debugging fireside
+
+use router will take you a place, use route is a place
+params and path need to match in the item(id)-specific link :carId
+
+const editable = ref({`})
+
+when passing into a function, needs to be .value
+this will allow the form data to be put into place that is not possible with whole object
