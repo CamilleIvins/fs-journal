@@ -14,3 +14,11 @@ TutorM3!
 
 Evil_Q          jimmyj@jimmy.com
 evilq@eq.com    sameas
+
+********************
+# - CAPSTONE DETAILS
+********************
+
+gamestone.onrender.com
+magic medley
+parkitect   - joeparkitect.onrender.com
