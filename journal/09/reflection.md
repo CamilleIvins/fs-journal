@@ -1,5 +1,7 @@
 # Weekly Reflection
-This reflection is open-format, so it can be whatever you like. Take this opportunity to write a bit on some of the things you have learned this week or some of the things that you are still struggling with; identify some challenges you had at the beginning of the week that you were able to overcome, or just generally reflect on how you are feeling at this point in the course.
+This reflection is open-format, so it can be whatever you like. Take this opportunity to write a bit on some of the things you have learned this week or some of the things that you are still struggling with; identify some challenges you had at the beginning of the week that you were able to overcome, or just generally reflect on how you are feeling at this point in the course.\
+
+http://localhost:3000/api/profiles/6515f2768a8db544790fb69b/adventures
 
 ## Prompts
 - What went well this week?
