@@ -18,7 +18,7 @@ Tests - js - type a console log - runs after request
 UNLESS
 console.log("run before request")
 
-# pm
+#   pm
 "pm" is a Postman script
     Mocha and Chai testing frameworks
         Chai is an assertion library
@@ -42,7 +42,7 @@ To
 const req = pm.request
 const original - JSON.parse(req.body.raw)
 console.log('request', req, original)
-# Making a test
+#   Making a test
  
  <!--           ⬇️ this is the test name -->
 pm.test('Request was a good one', ()=> {
@@ -61,7 +61,7 @@ pm.test('Car created as ecpected', ()=> {
     ...all the rest
 })
 
-# Get request
+#   Get request
 
 Get by ID
 
@@ -75,7 +75,8 @@ pm.test("Got ze right car" () => {
 })
 
 
-# pre-request script
+#   pre-request script
+
 THIS IS WHAT *AXIOS* SAVES YOU FROM HAVING TO DO
 
 let config - {
@@ -92,3 +93,77 @@ let config - {
 }
 
 pm.sendRequest(config)
+
+# Vue Tour
+use read me to install
+v-tour
+    steps
+        steps point to target (what actions will display)
+        
+make sure you are cd-d into the client side of the folder
+    npm install vue3-tour
+        visible in package json file
+
+main.js
+
+cosnt root = createApp(App)
+registerGlobalComponents(root)
+
+root {
+    .use(router)
+    .use(Vue3Tour)
+    .mount(`#app)
+    }
+
+#   in homepage
+
+steps:[{
+    target: '#v-step-0' <-- where this is activated, mutli-step == || a tutorial
+    header:{title: ''}
+    content: ''
+    actions:{next: ''}
+    params:{placement: ''}
+}]
+
+tourCallbacks:{
+    onFinish: (()=>{
+        router.push({name: 'Album Details', params:{{albumId: AppState.albums[0].id}}})
+    })
+}
+
+in v-tour div :callbacks=''
+
+#   Tour.vue page
+
+<v-tour name='myTours' :steps="ssteps" :callbacks="tourCallbacks">
+
+props:{
+    steps: {type: Array, required: true}
+    callbacks: {type: Object}
+}
+
+mounted{
+    this.$tours['myTour'].start
+}
+
+# limit tutorial via account page
+
+.put(this.updateAccount)
+
+in server side
+
+async(req,res,next){
+    try {
+        const account = await accountService
+    }
+}
+
+in client side
+async editAccount(){
+    trycatch
+}
+
+
+onSkip(()=.{
+    await accountService.editAccount({neetsTour:false})
+})
