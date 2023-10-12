@@ -1,11 +1,11 @@
 # CSharp and SQL Fundamentals
 01. What is the purpose of a `namespace`?
 
-  > | ANSWER HERE |
+  > | 'namespace' is used to control classes throughout an application. They also organize how elements are presented to programs with which they interact. |
 
 02. What is the difference between a `class` and an `interface`?
 
-  > | ANSWER HERE |
+  > | Interface relates to how functionality plays out, while classes have more direct control of what will happen, and the control over triggering the actions. |
 
 03. What is the method that returns an instance of a class, yet it has no return type?
 

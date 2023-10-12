@@ -60,3 +60,16 @@ Thursday Oct 12th is the LinkedIn review
 
 linkedin.com/in/tylerrayrice
 linkedin.com/in/rebecca-vandewater
+
+#   Oct 11th Wed lecture - Zach
+
+No slides
+
+Want @ least 45 skills listed (LinkedIn caps you at 50)
+    Leave a few spots to add specific calls
+
+Involta - 4th Thursday of every month
+Tech Gems
+    Jason Mertz(sp?)
+
+(Network --> Research/Apply --> follow-up) <--loop/repeat

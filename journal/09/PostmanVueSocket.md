@@ -167,3 +167,35 @@ async editAccount(){
 onSkip(()=.{
     await accountService.editAccount({neetsTour:false})
 })
+
+
+# SOCKETS
+vue - sockets - true
+option authenticated or not
+Not very good w/ hot module reload
+
+Network tab in dev tools
+    WS
+        'web sockets'
+            localhost is hot module reload
+            EIO
+                green you send to server, red is server returning to you
+Have Socket Provider, Service, and Test Handler
+
+Socket is just send message and data
+    payload is any data
+        payload and serversays
+
+        .on('', this.testSocket)
+
+            async testSocket(){
+
+            }
+    client side is not async
+        onTest(payload), onUserLogin(payload)
+
+
+In existing SERVER side: async getAccount(user) throw socket in
+
+SOCKETS CAN TELL YOU ABOUT OTHER USERS
+all constructed in Test Handler

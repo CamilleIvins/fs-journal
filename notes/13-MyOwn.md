@@ -14,6 +14,14 @@ TutorM3!
 
 Evil_Q          jimmyj@jimmy.com
 evilq@eq.com    sameas
+<!-- user id -->
+sgroot
+<!-- pswrd -->
+n85DsI2wqb-rcp4P
+<!-- your master endpoint -->
+SG-CodeWorks-7896-mysql-master.servers.mongodirector.com
+
+"CONNECTION_STRING":"server=<YOUR MASTER ENPOINT CONNECTION>;database=<YOUR DATABASE NAME>;port=3306;user id=sgroot;password=<YOUR PASSWORD>"
 
 ********************
 # - CAPSTONE DETAILS
