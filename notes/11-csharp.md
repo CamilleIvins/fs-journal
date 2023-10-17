@@ -1,5 +1,7 @@
 # CSharp
-Week 10
+Week 10 - Post-It C#
+Week 11 - Instacult C#
+(dotnet-vue)
 
 dotnet goes to https://localhost:7045
 to see documentation of what's going on: https://localhost:7045/swagger.index.html
@@ -1069,3 +1071,98 @@ public class AlbumCollaboratorViewModel : Album <--: = "extends"
 
 for DELETES
     make sure there is authorization - you cannot delete other's stuff
+
+#   Week 11 fullstack build - InstaCult
+
+Spin up server ASAP
+    make sure appsettings and env are working
+
+    UML - many to many
+        {   Repository item }
+        ⬇️       ⬇️       ⬇️
+        ACCT     CULT ⬅️--MEMBER
+        |
+        --------------------⬆️
+    Build out models based on UML
+
+dsSetup.sql - make tables est off of models
+
+
+#   in repos
+
+string sql = @"
+SELECT
+*
+FROM cults
+;";
+List<Cult> cults = _db.Query<Cult>(sql).ToList();
+return cults;
+
+Get leader of cult? ⬇️
+
+SELECT
+*
+FROM cults
+JOIN accounts ON accounts.id = cults.leaderId
+;";
+List<Cult> cults = _db.Query<Cult, Account, Cult>(sql(cult, leader)=>
+cult.leader = leader;
+return cult;
+).ToList();
+return cults
+
+Tid <-- "type ID"
+    allows data tyoes to be passed down despite differing parameters
+        You can cast down, not up, so REPO params can stay same
+
+#   InstaCult front end
+
+router, note authGuard middleware
+    just checks if login is valid, so you cannot access certain pages
+#   InstaCult
+
+be sure to add the computed elements and refs where appropriate on the page
+
+#   NOTE - InstaCult file tips
+Cult and CultMember file sets
+Use your CTRL + . to reduce typing when initializing files
+Also to CTRL click into created method in different file
+
+Make table to align w/ MODEL
+    be mindful of foreign key
+#   InstaCult - Model info
+Cultist Model has Profile, Account, and Cultist
+    Profile extends repo item,
+    Account extends Profile
+    Cultist ectends Profile
+
+#   InstaCult - More on members
+Cult controller will need access to the CultMember service, throw into the initial method
+
+The "map" function is the between brackets section running
+....(sql, (cultMember, cultist)=>
+{
+    cultist.CultMemverId = ciltMember.id;
+    cultist.CultId = cultMember.CultId;
+    return cultist;
+}, new{cultist}).ToList();
+return cultists
+
+
+can join any table in database by just adding a join line in the repository
+
+All async are Tasks
+All Authorized routes are therefore w/in Tasks
+
+#   InstaCult - Only leader can eject a member
+
+Who made the cult --> only they can remove
+make sure you have a null-check so that you can only delete/remove from what is there
+
+In controller, can throw references to other existing methods
+    ie this.GetCultMemberById(cultMemberId)
+        Make sure there is an exception so non-leader cannot remove someone
+
+*NOTE - Reduce member count upon member deletion
+
+#   InstaCult - More on members
