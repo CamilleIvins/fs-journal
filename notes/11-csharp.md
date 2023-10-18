@@ -1187,3 +1187,23 @@ ASYNC resetForm()
 #   Sam's Help Reviews App
 Account is many to many w/ reports and restaurants
 Front end LODELS be sure to have both ACCOUNT and PROFILE
+
+#   Back-end Interfaces
+namespace HelpReviews.Interfaces
+*NOTE - <!-- "T" is for TYPE, ie Tid == type ID, standing in for stuff like INT or string -->
+public interface IRepository<T, Tid>;
+{
+    List<T> Get();
+
+    T GetById(Tid id);
+    T Create(T newData);
+    public int Update(T updateData);
+    public int Delete(Tid id);
+
+}
+*ANCHOR - NOW  make restaurant repository
+
+namespace HelpReviews.Repositories;
+using HelpReviews.Interfaces;
+
+public class RestaurantRepository : IRespository<Restaurant, int>       <--choose Implement option for blueprint to load.
