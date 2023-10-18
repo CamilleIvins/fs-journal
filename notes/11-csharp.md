@@ -1165,4 +1165,25 @@ In controller, can throw references to other existing methods
 
 *NOTE - Reduce member count upon member deletion
 
-#   InstaCult - More on members
+#   NOTE - InstaCult
+YOU CAN UPDATE INFO DIRECTLY FROM THE TABLE
+#   InstaCult - FRONT END/CLIENT
+
+Set certain data as onMounted --> show up with page load
+*NOTE - REMEMBER - to get info into AppState
+
+*REVIEW - Account model has main constructor and an extention built in
+
+*REVIEW - make sure your imports go through so methods are read appropriately
+
+Pre-populate
+ASYNC resetForm()
+    can default info into it
+        based on latest input, or set details(i.e. fee cannot be changed)
+
+*REVIEW - many-to-many tables are just mailmen, do not have an internal set of data to return itself, just delivers to other tables.
+    *Never returns own data, just other's*
+
+#   Sam's Help Reviews App
+Account is many to many w/ reports and restaurants
+Front end LODELS be sure to have both ACCOUNT and PROFILE

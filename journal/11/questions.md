@@ -47,4 +47,6 @@
 
   ```
 
-  > | ANSWER HERE |
+  > | PTs belonging to Drs || Pic in an alb w/P-d as the collab
+  List<Patient> patients = _db.Query
+   |
