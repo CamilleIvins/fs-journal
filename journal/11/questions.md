@@ -47,7 +47,7 @@
 
   ```
 
-  > | PTs belonging to Drs || Pic in an alb w/P-d as the collab
+  > | 
   List<Patient> patients = _db.Query<Patient_Doctors, Patient, Patient>(sql, (patient_doctor, patient)=>
   {
     patient.Patient_DoctorId = patient_doctor.id;

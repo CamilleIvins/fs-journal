@@ -1341,3 +1341,51 @@ This will eventually be, from the p-3 down, in a new place
 
     This will error out because original get request did not have an Auth
     ALSO add the elvis operator, because the return can be null on all the view if not a creator
+
+#   Restaurant details page
+Get to details page - router link by card or by button
+    create a path to the page in router
+        ad link in card
+            :to="{name: 'Restaurant Details', params{restaurantId: restaurantId}}"
+        in details page, just put some text in to show that the link works, and that the URL changes for each restaurant ID
+
+async function getRestaurantDetails(){
+    try
+        await restaurantsService.getRestaurantDetails(route.params.restaurantId)
+    catch
+}
+onMounted(()=>{
+    getRestaurantDetails()
+})
+
+*NOTE - NEED activeRestaurant in AppState
+SERVICE
+async getRestaurantDetails(restaurantId){
+    const res = await api.get(Object.keys({api:"restaurat", retaurant:2, restaurantID}).join('/'))
+    HAHAHAHA...okay...⬇️
+    const res = await api.get('api/restaurant/${restaurantId}')
+}
+
+
+Details page needs a v-if, or else will not load if the data does not relay fast enough
+
+*NOTE - Mick's script section is entirely in a setup
+
+v-if to show both shutdown, and
+ANOTHER v-if to allow to shutdown/re-open if the account user is the creator/owner of restaurant
+
+button to toggle shutdown status
+    flip bool, send to service to update
+        use api.put
+            AppState it as ...= new Restaurant(res.data)
+
+            Can retype all of pop message content, including icons
+
+            in Server
+                add auth in GetById, pass down userInfo.Id
+                    WE STILL DO NOT WANT THIS ROUTE AUTHORIZED
+                        elvis operator - allows ref object to be null
+                    ad if(restaurant.IsShurdown != null && restaurant.CreatorId != userId) throw new exception
+
+
+                    inedit, Sam did original.IsShutdown = updayeData.IsShutdown ?? original.IsShutdown, and to make it work needed to add ? to the model after the bool (bool? isShutdown {get; set;})
