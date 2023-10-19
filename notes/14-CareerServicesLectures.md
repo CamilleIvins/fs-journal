@@ -73,3 +73,6 @@ Tech Gems
     Jason Mertz(sp?)
 
 (Network --> Research/Apply --> follow-up) <--loop/repeat
+
+#   Open forum
+Next will be the elevator pitch and interview day

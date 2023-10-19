@@ -1202,8 +1202,142 @@ public interface IRepository<T, Tid>;
 
 }
 *ANCHOR - NOW  make restaurant repository
+*ANCHOR - do not write logic in the interface
+*ANCHOR - JS does not support interfaces, it will get it in next uodate, typescript has it, now
 
 namespace HelpReviews.Repositories;
 using HelpReviews.Interfaces;
 
-public class RestaurantRepository : IRespository<Restaurant, int>       <--choose Implement option for blueprint to load.
+public class RestaurantRepository : IRespository<Restaurant, int>       <--choose Implement option for blueprint to load (all the methods listed in interface load up)
+
+*NOTE - do not use interface for service layer
+
+#   SERVICE, CONTROLLER
+
+roll out repo initiation in S, dependencies in C
+
+  [Authorize]
+    [HttpPost]
+
+    public async Task<ActionResult<Restaurant>> CreateRestaurant([FromBody] Restaurant restaurantData)
+    {
+        try
+        {
+            Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
+            restaurantData.CreatorId = userInfo.Id;
+            Restaurant newRestaurant = _restaurantsService.CreateRestaurant<Account>(restaurantData);
+            return newPicture;
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        };
+    }
+
+
+internal Restaurant CreateRestaurant(Restaurant restaurantData)
+    {
+        return _repo.Create(restaurantData);
+    }
+
+in repo
+
+string sql = @"
+INSERT INTO restaurants
+(name, imgUrl, description, creatorId)
+VALUES
+(@name, @imgUrl, @description, @creatorId);
+
+SELECT
+r.*,
+a.*
+FROM restaurants r
+JOIN accoutns a ON a.id = r.creatorId
+WHERE r.id = LAST_INSERT_ID()
+;";
+<!-- DAPPER statement -->
+Restaurant newRestaurant = _db.Query<Restaurant, Profile, Restaurant>(sql,(restaurant, profile)=>
+{
+    restaurant.Creator = profile;
+    return restaurant;
+}, newData).FirstOrDefault();
+return newRestaurant;
+
+
+
+*account has e-mail, so use profile
+<!-- (was
+SELECT
+FROM restaurants
+WHERE id = LAST_INSERT_ID()) -->
+#   DON'T FORGET THE startup file
+Need to have repo and service in the file in order to process anything in the app related to it
+*NOTE - do not use base64 images! Too big
+
+*   Get functions need to be mindful of endpoints
+
+#NOTE - be sure to specify if in the WHERE r.id = @id <-- two IDs are being passed, need to specify which one is to be used
+
+#   Edit restaurant to shut it down set as a PUT
+Place authorization so that restaurant creator is the one who can shut the restaurant down has auth
+
+parameters for edit are Restaurant's update data(vs original), restaurant's ID, and User's ID
+
+original.Name = Update.Name ?? original.Name
+...and so on and so forth
+    Mind the Bools, check Model to make amendable to this format
+
+#   FRONT END - homepage, restaurant card
+*   create restaurant service - gotta get some data
+getRestaurants(){
+    const res = await api.get('api.resrtaurants'
+    logger.log("getting restaurants"))
+}
+
+set as onMounted on the homepage
+Flesh out Client side models
+*NOTE - accounts extend profiles, but we are leaving them in separate pages (I do not think InstaCult has it that way)
+    ^remember the super()
+        export class Account extends Profile {
+            constructor(data){
+                super()
+                route()
+            }
+        }
+            This can be plugged into the Restaurant model
+ALL this needs to go into APPSTATE
+in return, put computed roperties that will show up in template area
+
+Move to own component AFTER demo in homepage
+
+div -- container-fluid
+    section -- row
+    div -- col-4    <--this is the line for the v-for
+        div -- elevation 5
+        img
+        div -- p3
+            span
+            p
+        div -- d-flex justify-contnet-around
+            span -- mdi
+            span -- mdi
+
+This will eventually be, from the p-3 down, in a new place
+    <RestaurantCard :restaurant="r"/> will be the insert
+        NEEDS PROPS
+        then bind
+
+        propsL{
+            restaurant:{type: Restaurant, required:true}
+        }
+
+#   View alteration
+    how to get to show specific info for specific users
+
+    Back to server
+
+    in service
+        set a second line of logic to return only restaurants that are open, unless the shut restaurants are made by the account
+
+    This will error out because original get request did not have an Auth
+    ALSO add the elvis operator, because the return can be null on all the view if not a creator
