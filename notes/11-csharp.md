@@ -1389,3 +1389,230 @@ button to toggle shutdown status
 
 
                     inedit, Sam did original.IsShutdown = updayeData.IsShutdown ?? original.IsShutdown, and to make it work needed to add ? to the model after the bool (bool? isShutdown {get; set;})
+        
+        authSettled =- wait for page to laoad until you've been logged in
+        authGuard - cannot access w/o credentials, period
+
+
+Report model
+    based on UML
+        type in "prop", tab to get all in
+            can get a default pic if none is provided
+                place after the get-set and an "=" "url"
+                    this makes it so there is always a photo even if one is not provided by user
+Repo - consider interface integration
+
+#   NOTE - TABLE
+    connect to DB using file button if not started
+        foreign key constraints - be sure alignment can match the other tables ref (INT vs VARCHAR, different VARCHAR limits)
+
+    Gets will be taken from different endpoints
+        RestaurantController
+            ({restaurantId}/reports)
+
+            Reports will need to ID a restaurant,so need to use RESTAURANT SERVICE
+                SERVICES can talk to one another
+#   Front end
+    Similarly, the services ref on pages will also cross, to get reports by restaurant
+        needs service for restaurant in w/ auth0 in report controller
+    Keep a Profile on the REPORT MODEL - this allows an account to be linked with their reports
+        update QUERY
+            Report, Profile, Report
+                sql,(report, priofile)=>{
+                    report.Creator = profile;
+                    return report;
+                }, new {restaurantId}).ToList
+
+
+Need to alias out if twice using a table
+*ANCHOR - if errors, can take the SQL string and put in dbSetup and run it. will show if anything/right things come back
+#TODO - It is easier to append an existing statement than build out a complex one from scratch
+
+        if adding RESTUARANT to REPORT model
+            SELECT
+                reports*,
+                repCreator.*,
+                restaurants.*,
+                restCreator.*
+            FROM reports
+            JOIN accounts repCreator ON repCreator.id = report.creatorId
+            JOIN restaurants ON restaurants.id = report.restaurantId
+            JOIN accounts restCreator ON restCreator.id = restaurants.creatorId
+            Where reports.restaurantId = @restaurantId
+            ;";
+
+            List<Report> reports = _db.Query<Report, Profile, Restuarant, Profile, Report>(sql,(report, repCreator, restaurant, rest,Creator)=>{
+                report.Creator= repCreator;
+                restaurant.Creator= restCreator;
+                report.rRestaurant= restaurant;
+
+                return report;
+            }, new{restaurantId}).To list;
+            return reports;
+
+#   Stages build of query
+should have played sql bolt games
+
+SELECT
+restaurants.*,
+10 as reportCount
+FROM restaurants
+JOIN reports ON reports.restaurantId = restaurant.id;
+GROUP BY(restaurant.id);
+
+
+SELECT
+restaurants.*,
+reports.*
+10 as reportCount
+FROM restaurants
+LEFT JOIN reports ON reports.restaurantId = restaurant.id;
+⬆️ this will return all restaurant reports
+
+SELECT
+restaurants.*,
+COUNT(reports.id) as reportCount
+FROM restaurants
+LEFT JOIN reports ON reports.restaurantId = restaurant.id;
+GROUP BY(restaurant.id);
+    ⬆️returns all restaurants and adds a column to show report numbers
+        also is RIGHT JOIN, others
+
+#   Back in repo
+Drop this in methods
+
+Get
+    FROM restaurants r
+    LEFT JOIN reports ON reports.restaurantId = r.Id
+    ...
+    GROUP BY (restaurants.id)
+
+    and stop aliasing
+
+    SELECT
+    restaurants.*,
+    COUNT(reports.id) AS reportCount,   <--places in the order you want, all account stuff comes after
+    accounts.*,
+    FROM restaurants
+    LEFT JOIN reports ON reports.restaurantID = restaurants.id
+    JOIN accointsON accounts.id = creatorId
+    GROUP BY (restaurants.id);
+
+*NOTE - IDs are what separate tables in DAPPER (dbSetup)
+
+SELECT
+restaurants.*,
+COUNT(reports.id) as reportCount
+FROM restaurants
+LEFT JOIN reports ON reports.restaurantId = restaurant.id;
+GROUP BY(restaurant.id);
+
+
+
+GetBYId
+
+SELECT
+r*,
+a*,
+FROM restaurants
+    JOIN reports ON reports.restaurantID = restaurants.id
+    JOIN accounts ON accounts.id = creatorId
+    WHERE resataurants.id = @id
+
+SELECT
+restaurants.*,
+    COUNT(reports.id) AS reportCount,   <--places in the order you want, all account stuff comes after
+    accounts.*,
+FROM restaurants
+    JOIN reports ON reports.restaurantId = restaurants.id
+    LEFT JOIN accounts ON accounts.id = restaurant.creatorId
+    WHERE resataurants.id = @id
+    Group BY (restaurants.id)
+
+
+Try in dbSetup
+
+  SELECT
+                reports*,
+                repCreator.*,
+                restaurants.*,
+                restCreator.*
+            FROM reports
+            JOIN accounts repCreator ON repCreator.id = report.creatorId
+            JOIN restaurants ON restaurants.id = report.restaurantId
+            JOIN accounts restCreator ON restCreator.id = restaurants.creatorId
+            Where reports.restaurantId = @restaurantId
+            ;";
+
+            List<Report> reports = _db.Query<Report, Profile, Restuarant, Profile, Report>(sql,(report, repCreator, restaurant, rest,Creator)=>{
+                report.Creator= repCreator;
+                restaurant.Creator= restCreator;
+                report.rRestaurant= restaurant;
+
+                return report;
+            }, new{restaurantId}).To list;
+            return reports;
+
+DOES NOT WORK
+  <!-- SELECT
+                rep.*,
+                repCreator.*,
+                restaurants.*,
+                COUNT(repCounts.id) AS reportCount,
+                restCreator.*
+            FROM reports rep
+            JOIN accounts repCreator ON repCreator.id = rep.creatorId
+            JOIN restaurants ON restaurants.id = rep.restaurantId
+            JOIN accounts restCreator ON restCreator.id = restaurants.creatorId
+            LEFT JOIN reports repCounts ON restaurans.id = repCounts.restaurantId
+            Where rep.restaurantId = @restaurantId
+            GROUP BY(restaurants.id)
+            ;";
+
+            List<Report> reports = _db.Query<Report, Profile, Restuarant, Profile, Report>(sql,(report, repCreator, restaurant, rest,Creator)=>{
+                report.Creator= repCreator;
+                restaurant.Creator= restCreator;
+                report.rRestaurant= restaurant;
+
+                return report;
+            }, new{restaurantId}).To list;
+            return reports; -->
+
+#   Front end - details page
+REPORT model
+
+Save reports gotten to APPSTATE
+    Be sure imports work
+
+Compute in the Details page
+
+# - Make component - reportCard
+Bind in the homepage card link
+
+const props = defineProps({report:{type:Report, required:true}})
+
+
+*NOTE - d-flex works in col - but needs to use justify/align, now
+*NOTE - v-model ties the form data to a specific part of the instance based on the model
+
+#   report form
+In a report post, must have a creator of the report and a restaurant the report is on
+in SELECT portion of form, BIND the restaurant names (can only choose to report on existing restaurants)
+    can see active changes when VUE TOOLS plays nicely.
+
+*LINK - canuse a disabled and selected placeholder - check this ex
+
+height: __dvh
+          ⬆️dynamic view height
+
+
+Create function to edit number of visits
+
+internal void does not return anything
+internal void IncreaseVisits(Restaurant restaurant){
+
+}
+
+GROUP BY
+ORDER BY(restaurant.visits) DESC
+    ⬆️cthis makes the order go by popularity
