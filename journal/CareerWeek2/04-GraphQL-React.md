@@ -5,6 +5,9 @@ Chief - NYC Executive women's social network
     - used to work for 
 studio.apollographql.com
 docs.nestjs.com
+
+**ADVICE**
+Build GregsList in whichever framework or language and utilise at least one relationship
 #
 # - Typescript
 "Microsoft's attempt to turn C# into JS"
@@ -68,3 +71,8 @@ app.module.ts
 @module {
     imports: [CarModule]    <-- must be included to get app-wide import
 }
+
+@mutations = post, put, delete
+! to make required w/in create format
+
+w/in Comments type, can specify relationship type "@ManyToOne"
